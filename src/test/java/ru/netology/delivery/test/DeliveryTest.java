@@ -29,10 +29,12 @@ public class DeliveryTest {
     static void tearDownAll() {
         SelenideLogger.removeListener("allure");
     }
+    @BeforeEach
+    void setup() {
+        open("http://localhost:9999");
+    }
 
     @Test void shouldSendForm() {
-        Configuration.holdBrowserOpen = true;
-        open("http://localhost:9999");
         UserInfo data = generateInfo();
         String setDate = generateDate(3);
         String changeDate = generateDate(5);
